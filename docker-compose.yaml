@@ -1,0 +1,31 @@
+version: '2'
+
+services:
+  db:
+    container_name: 'db'
+    image: mysql:5.7
+    ports:
+      - '3307:3306'
+    environment:
+       MYSQL_DATABASE: 'genaidb'
+       MYSQL_PASSWORD: 'root'
+       MYSQL_ROOT_PASSWORD: 'root'
+    volumes:
+      - 'db:/var/lib/mysql'
+    command: ['mysqld', '--character-set-server=utf8mb4', '--collation-server=utf8mb4_unicode_ci']
+  web:
+    build: .
+    command: >
+      bash -c "python3 manage.py makemigrations test_result_data_ingestion
+      && python3 manage.py migrate
+      && python manage.py runserver 0.0.0.0:8001"
+    volumes:
+      - '.:/base_directory'
+    ports:
+      - "8001:8001"
+    depends_on:
+      - db
+
+volumes:
+  db:
+  .:
