@@ -34,4 +34,4 @@ web_1  | Quit the server with CONTROL-C.
 Copy the URL from stack trace
 
 6. Hit in browser or postman [http://127.0.0.1:8000/ ](http://0.0.0.0:8001/)
-  You should see a message "App is running"
+  You should see a message ""Hello, This App helps in ingesting performance test results into Database."
