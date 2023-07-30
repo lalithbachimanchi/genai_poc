@@ -1,13 +1,13 @@
 # Ingest Performance Test Results into Database
 How to run the application?
 
-1. Install Docker
+1. Install Docker and Docker Compose
    
 3. Clone the repo
 
 4. Go to the repo folder in terminal
 
-5. run the command docker-compose up
+5. Run the command docker-compose up
 
 You will see log of installations happening....
 
@@ -33,5 +33,5 @@ web_1  | Quit the server with CONTROL-C.
 
 Copy the URL from stack trace
 
-4. Hit in browser or postman [http://127.0.0.1:8000/ ](http://0.0.0.0:8001/)
+6. Hit in browser or postman [http://127.0.0.1:8000/ ](http://0.0.0.0:8001/)
   You should see a message "App is running"
