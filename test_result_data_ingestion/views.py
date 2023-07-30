@@ -63,4 +63,6 @@ class CsvUploader(TemplateView):
         return render(request, self.template_name, context)
 
 def index(request):
-    return HttpResponse("Hello, world. You're at the polls index.")
+    return HttpResponse("Hello, This App helps in ingesting performance test results into Database. "
+                        "Following endpoints are implemented: /api and /upload_csv"
+                        )

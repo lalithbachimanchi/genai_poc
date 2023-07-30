@@ -18,7 +18,7 @@ from django.contrib import admin
 from django.urls import include, path
 from rest_framework import routers
 from django.urls import re_path as url
-from test_result_data_ingestion.views import PerformanceTestResultsViewSet, CsvUploader
+from test_result_data_ingestion.views import PerformanceTestResultsViewSet, CsvUploader, index
 
 router = routers.DefaultRouter()
 
@@ -26,9 +26,9 @@ router = routers.DefaultRouter()
 router.register(r'ingest_data', PerformanceTestResultsViewSet, basename='ingest_data')
 
 urlpatterns = [
-    path("ingest_data/", include("test_result_data_ingestion.urls")),
+    path("", index, name="index"),
     path("admin/", admin.site.urls),
     path("api/", include(router.urls)),
-    url('^csv-uploader/$', CsvUploader.as_view(), name='csv-uploader'),
+    url('^upload_csv/$', CsvUploader.as_view(), name='csv-uploader'),
 
 ]
