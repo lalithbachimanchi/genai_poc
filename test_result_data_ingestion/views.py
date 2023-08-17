@@ -7,8 +7,11 @@ from rest_framework import viewsets
 from .models import *
 from .serializers import *
 from django.views.generic import TemplateView
+from rest_framework.views import APIView
 from django.contrib.messages.views import SuccessMessageMixin
 import pandas as pd
+from rest_framework.response import Response
+from rest_framework import status
 import io
 import datetime
 
@@ -67,3 +70,22 @@ def index(request):
                         "<h2>Following endpoints are implemented:</h2>"
                         "<h3> /api and /upload_csv </h3>"
                         )
+
+# class APITestResultsList(APIView):
+#
+#     def get(self, request, format=None):
+#         results = APITestResults.objects.all()
+#         serializer = APITestResultsListSerializer(results, many=True)
+#         return Response(serializer.data)
+#
+#     def post(self, request, format=None):
+#         serializer = APITestResultsListSerializer(data=request.data)
+#         if serializer.is_valid():
+#             serializer.save()
+#             return Response(serializer.data, status=status.HTTP_201_CREATED)
+#         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+
+class APITestResultsViewSet(viewsets.ModelViewSet):
+    serializer_class = APITestResultsListSerializer
+    queryset = APITestResults.objects.all().order_by('-created').values()

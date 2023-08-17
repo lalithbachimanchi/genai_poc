@@ -25,3 +25,15 @@ class PerformanceTestResults(models.Model):
     connect_time = models.IntegerField(null=True)
     created = models.DateTimeField(auto_now_add=True)
     modified = models.DateTimeField(auto_now=True)
+
+
+class APITestResults(models.Model):
+    id = models.AutoField(primary_key=True)
+    build_number = models.IntegerField(null=True)
+    test_name = models.CharField(blank=True,max_length=255)
+    test_execution_time_in_secs = models.FloatField(null=True)
+    outcome = models.CharField(blank=True,max_length=255)
+    error_message = models.TextField(blank=True)
+    traceback = models.TextField(blank=True)
+    created = models.DateTimeField(auto_now_add=True)
+    modified = models.DateTimeField(auto_now=True)

@@ -16,7 +16,7 @@ services:
   web:
     build: .
     command: >
-      bash -c "python3 manage.py makemigrations test_result_data_ingestion
+      bash -c "yes | python3 manage.py makemigrations test_result_data_ingestion
       && python3 manage.py migrate
       && python manage.py runserver 0.0.0.0:8001"
     volumes:

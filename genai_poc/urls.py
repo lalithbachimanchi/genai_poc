@@ -18,12 +18,13 @@ from django.contrib import admin
 from django.urls import include, path
 from rest_framework import routers
 from django.urls import re_path as url
-from test_result_data_ingestion.views import PerformanceTestResultsViewSet, CsvUploader, index
+from test_result_data_ingestion.views import PerformanceTestResultsViewSet, CsvUploader, index, APITestResultsViewSet
 
 router = routers.DefaultRouter()
 
 #API
-router.register(r'ingest_data', PerformanceTestResultsViewSet, basename='ingest_data')
+router.register(r'ingest_performace_test_data', PerformanceTestResultsViewSet, basename='ingest_performace_test_data')
+router.register(r'ingest_api_test_data', APITestResultsViewSet, basename='ingest_api_test_data')
 
 urlpatterns = [
     path("", index, name="index"),
