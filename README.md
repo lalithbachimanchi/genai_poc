@@ -1,4 +1,4 @@
-# Ingest Performance Test Results into Database
+# Ingest Test Results into Database
 How to run the application?
 
 1. Install Docker and Docker Compose
